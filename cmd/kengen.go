@@ -29,7 +29,7 @@ import (
 // keygenCmd represents the keygen command
 var keygenCmd = &cobra.Command{
 	Use:   "keygen",
-	Short: "Generate private key and save to file specified. Support ECDSA and RAS.",
+	Short: "Generate private key and save to the file specified. Support ECDSA and RAS.",
 	Long:  ``,
 	Args:  cobra.ExactArgs(1),
 	Run:   func(cmd *cobra.Command, args []string) {},
@@ -37,4 +37,7 @@ var keygenCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(keygenCmd)
+
+	keygenCmd.PersistentFlags().IntVar(&bitSize, "bit-size", 256, "the bit size of ecdsa(must be one of 224,256,384 and 512)")
+	keygenCmd.PersistentFlags().StringVarP(&keyfile, "key-file", "f", "private_key.pem", "the file path for saving generated ecdsa private key")
 }

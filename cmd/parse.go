@@ -36,7 +36,7 @@ import (
 // parseCmd represents the parse command
 var parseCmd = &cobra.Command{
 	Use:   "parse",
-	Short: "Parse JWT token and output formated information to console",
+	Short: "Parse JWT and output formated information to console",
 	Long:  ``,
 	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {

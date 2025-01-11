@@ -82,7 +82,7 @@ a specified signing algorithm, a JWT is generated and output to the console.`,
 		token := jwt.NewWithClaims(method, jwt.MapClaims(c))
 		signedString, err := token.SignedString(key)
 		if err != nil {
-			return err
+			fatalf("sign err: %v\n", err)
 		}
 		fmt.Println(signedString)
 		return nil
