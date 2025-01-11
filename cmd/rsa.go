@@ -62,7 +62,4 @@ var rsaCmd = &cobra.Command{
 
 func init() {
 	keygenCmd.AddCommand(rsaCmd)
-
-	rsaCmd.Flags().IntVar(&bitSize, "bit-size", 2048, "the bit size of ecdsa(must be one of 2048,3072 and 4096)")
-	rsaCmd.Flags().StringVarP(&keyfile, "key-file", "f", "private_key.pem", "the file path for saving generated ecdsa private key")
 }

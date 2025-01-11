@@ -36,7 +36,7 @@ import (
 // ecdsaCmd represents the ecdsa command
 var ecdsaCmd = &cobra.Command{
 	Use:   "ecdsa",
-	Short: "Generate ECDSA private key randomly and save the file specified",
+	Short: "Generate ECDSA private key randomly and save to the file specified",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		file, err := os.OpenFile(keyfile, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0640)
@@ -80,7 +80,4 @@ var ecdsaCmd = &cobra.Command{
 
 func init() {
 	keygenCmd.AddCommand(ecdsaCmd)
-
-	ecdsaCmd.Flags().IntVar(&bitSize, "bit-size", 256, "the bit size of ecdsa(must be one of 224,256,384 and 512)")
-	ecdsaCmd.Flags().StringVarP(&keyfile, "key-file", "f", "private_key.pem", "the file path for saving generated ecdsa private key")
 }

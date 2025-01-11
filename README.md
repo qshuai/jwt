@@ -1,7 +1,6 @@
-# jwt
-
+jwt
+===
 jwt is a command line tool for generating and parsing JWT tokens in Go.
-
 
 
 ### Install:
@@ -10,12 +9,10 @@ jwt is a command line tool for generating and parsing JWT tokens in Go.
 go install github.com/qshuai/jwt@latest
 ```
 
-
-
 ### Usage:
 
 ```
-jwt --help
+$ jwt --help
 A command-line tool for signing and parsing JWT
 
 Usage:
@@ -24,8 +21,8 @@ Usage:
 Available Commands:
   completion  Generate the autocompletion script for the specified shell
   help        Help about any command
-  keygen      Generate private key and save to file specified. Support ECDSA and RAS.
-  parse       Parse JWT token and output formated information to console
+  keygen      Generate private key and save to the file specified. Support ECDSA and RAS.
+  parse       Parse JWT and output formated information to console
   sign        Sign JWT using alg, secret and claims
 
 Flags:
@@ -35,8 +32,6 @@ Use "jwt [command] --help" for more information about a command.
 ```
 
 Please refer to the command-line help documentation for this tool, as it can address most of your questions. If you still have any uncertainties, feel free to submit an issue.
-
-
 
 ### Examples: 
 
@@ -104,5 +99,3 @@ Please refer to the command-line help documentation for this tool, as it can add
   	"iss": jidu
   	"sub": usercenter
   ```
-
-  
