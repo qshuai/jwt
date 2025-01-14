@@ -1,19 +1,37 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"net/http"
 	"os"
 )
 
+var (
+	port     = flag.String("port", "443", "the port of http server listened on")
+	https    = flag.Bool("tls", false, "whether to enable https server")
+	certfile = flag.String("cert-file", "server.cert", "the certification file path")
+	keyfile  = flag.String("key-file", "server.key", "the private key file path")
+)
+
 func main() {
+	flag.Parse()
+
 	http.HandleFunc("/setcookie", setCookie)
 	http.HandleFunc("/override_cookie", overrideCookie)
 
-	err := http.ListenAndServe(":8080", nil)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "setup http server err: %v", err)
-		os.Exit(1)
+	if *https {
+		err := http.ListenAndServeTLS(":"+*port, *certfile, *keyfile, nil)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "setup https server err: %v", err)
+			os.Exit(1)
+		}
+	} else {
+		err := http.ListenAndServe(":"+*port, nil)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "setup http server err: %v", err)
+			os.Exit(1)
+		}
 	}
 }
 
